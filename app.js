@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const db = require('./models/index');
 
 const PORT = 3000;
 
