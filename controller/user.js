@@ -46,3 +46,13 @@ exports.deleteUser = async function (req, res) {
     data: data,
   });
 };
+
+exports.bulkCreate = async function(req, res){
+  const body = req.body;
+  const data = await Users.bulkCreate(body);
+
+  res.status(200).json({
+    success : true,
+    data : data
+  })
+}
