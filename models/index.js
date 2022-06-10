@@ -19,7 +19,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-var users = require("./users");
+var { users } = require("./users");
 db.users = users(sequelize, DataTypes);
 
 db.sequelize
@@ -30,3 +30,4 @@ db.sequelize
   .catch(function (err) {
     console.log("Error" + err);
   });
+module.exports = db;
