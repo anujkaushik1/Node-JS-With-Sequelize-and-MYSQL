@@ -11,6 +11,10 @@ exports.createUser = async function (req, res) {
   });
 
   const user = await data.save();
+
+  data.name = "Nishant Jain";
+  data.save();
+
   res.status(200).json({
     success : true,
     data : user
