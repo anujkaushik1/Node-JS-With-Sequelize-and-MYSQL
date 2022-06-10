@@ -47,12 +47,20 @@ exports.deleteUser = async function (req, res) {
   });
 };
 
-exports.bulkCreate = async function(req, res){
+exports.bulkCreate = async function (req, res) {
   const body = req.body;
   const data = await Users.bulkCreate(body);
 
   res.status(200).json({
-    success : true,
-    data : data
-  })
-}
+    success: true,
+    data: data,
+  });
+};
+
+exports.findAll = async function (req, res) {
+  const data = await Users.findAll({});
+  res.status(200).json({
+    success: true,
+    data: data,
+  });
+};
