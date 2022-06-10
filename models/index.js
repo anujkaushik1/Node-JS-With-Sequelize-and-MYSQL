@@ -1,4 +1,4 @@
-const Sequelize = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 
 const sequelize = new Sequelize("Users", "root", "password", {
   host: "localhost",
@@ -10,6 +10,22 @@ sequelize
   .authenticate()
   .then(function () {
     console.log("Connection Successful");
+  })
+  .catch(function (err) {
+    console.log("Error" + err);
+  });
+
+const db = {};
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+
+var users = require("./users");
+db.users = users(sequelize, DataTypes);
+
+db.sequelize
+  .sync({ force: true })
+  .then(function () {
+    console.log("Data Inserted Successfully");
   })
   .catch(function (err) {
     console.log("Error" + err);
