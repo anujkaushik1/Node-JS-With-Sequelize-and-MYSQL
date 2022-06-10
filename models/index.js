@@ -23,7 +23,7 @@ var { users } = require("./users");
 db.users = users(sequelize, DataTypes);
 
 db.sequelize
-  .sync({ force: true })
+  .sync()
   .then(function () {
     console.log("Data Inserted Successfully");
   })

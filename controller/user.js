@@ -16,7 +16,20 @@ exports.createUser = async function (req, res) {
   data.save();
 
   res.status(200).json({
-    success : true,
-    data : user
-  })
+    success: true,
+    data: user,
+  });
+};
+
+exports.updateUser = async function (req, res) {
+  const body = req.body;
+  let data = await Users.update(body, {
+    where: {
+      id: req.params.id,
+    },
+  });
+  res.status(200).json({
+    success: true,
+    data: data,
+  });
 };
