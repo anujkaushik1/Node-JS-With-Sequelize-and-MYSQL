@@ -23,11 +23,24 @@ exports.createUser = async function (req, res) {
 
 exports.updateUser = async function (req, res) {
   const body = req.body;
-  let data = await Users.update(body, {
+  const data = await Users.update(body, {
     where: {
       id: req.params.id,
     },
   });
+  res.status(200).json({
+    success: true,
+    data: data,
+  });
+};
+
+exports.deleteUser = async function (req, res) {
+  const data = await Users.destroy({
+    where: {
+      id: req.params.id,
+    },
+  });
+
   res.status(200).json({
     success: true,
     data: data,

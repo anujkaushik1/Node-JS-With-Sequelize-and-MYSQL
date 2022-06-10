@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const db = require('./models/index');
-const {createUser, updateUser} = require('./controller/user');
+const {createUser, updateUser, deleteUser} = require('./controller/user');
 
 const PORT = 3000;
 
@@ -14,6 +14,8 @@ app.get('/', function(req, res){
 app.post('/create', createUser)
 
 app.put('/update/:id', updateUser);
+
+app.delete('/delete/:id', deleteUser);
 
 app.listen(PORT, function(){
     console.log("Sever is listening at port", PORT);
